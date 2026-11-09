@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090d25">
+  <title>XII TJKT 2 | SMK Yasmida Ambarawa</title>
+  <style>
+    :root{
+      --bg:#090d25;--panel:rgba(20,27,65,.78);--line:rgba(135,157,255,.2);
+      --cyan:#36e5ff;--blue:#5577ff;--purple:#a66bff;--pink:#ff62c8;
+      --text:#f4f6ff;--muted:#aab4d5;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;z-index:-2;background:
+      radial-gradient(circle at 15% 15%,rgba(55,229,255,.16),transparent 28%),
+      radial-gradient(circle at 85% 22%,rgba(166,107,255,.2),transparent 30%),
+      radial-gradient(circle at 50% 90%,rgba(255,98,200,.12),transparent 35%),
+      linear-gradient(145deg,#080c22,#101638 55%,#090d25)}
+    body:after{content:"";position:fixed;inset:0;z-index:-1;opacity:.22;pointer-events:none;background-image:linear-gradient(rgba(100,130,255,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(100,130,255,.12) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(to bottom,black,transparent 85%)}
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(1120px,calc(100% - 40px));margin:auto}
+    header{position:sticky;top:0;z-index:10;background:rgba(8,12,34,.78);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+    nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:850;letter-spacing:.04em}
+    .logo{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(135deg,var(--cyan),var(--blue),var(--purple));color:#081027;font-size:14px;box-shadow:0 0 25px #5577ff55}
+    .navlinks{display:flex;gap:25px;color:var(--muted);font-size:14px}
+    .navlinks a:hover{color:var(--cyan)}
+    .hero{min-height:590px;display:grid;align-items:center;padding:80px 0 70px;position:relative}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:45px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;border:1px solid #36e5ff55;background:#36e5ff12;color:var(--cyan);padding:9px 14px;border-radius:99px;font-size:12px;font-weight:750;letter-spacing:.12em;text-transform:uppercase}
+    .pulse{width:7px;height:7px;background:var(--cyan);border-radius:50%;box-shadow:0 0 12px var(--cyan)}
+    h1{font-size:clamp(48px,7vw,82px);line-height:.98;letter-spacing:-.065em;margin:25px 0 18px}
+    .gradient{background:linear-gradient(90deg,var(--cyan),#8d9cff 48%,var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .lead{color:var(--muted);font-size:17px;line-height:1.8;max-width:560px}
+    .hero-actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:30px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:13px;padding:13px 19px;font-weight:750;font-size:14px;border:1px solid var(--line);transition:.2s;cursor:pointer}
+    .btn-primary{background:linear-gradient(100deg,var(--cyan),#8292ff,var(--purple));color:#081027;border:0;box-shadow:0 10px 30px #5577ff35}
+    .btn:hover{transform:translateY(-3px);filter:brightness(1.08)}
+    .btn-ghost{background:#ffffff08;color:var(--text)}
+    .network-art{height:390px;position:relative;display:grid;place-items:center}
+    .orbit{position:absolute;border:1px solid #6b8dff45;border-radius:50%;transform:rotate(-25deg);width:330px;height:190px;box-shadow:0 0 35px #5577ff12}
+    .orbit.two{transform:rotate(55deg);width:290px;height:240px;border-color:#36e5ff55}
+    .core{width:145px;height:145px;border-radius:35px;display:grid;place-items:center;font-size:42px;background:linear-gradient(145deg,#36e5ff,#5577ff 55%,#a66bff);color:#07112b;box-shadow:0 0 70px #5577ff88;transform:rotate(-8deg);z-index:2}
+    .node{position:absolute;width:58px;height:58px;border-radius:18px;display:grid;place-items:center;background:#18234f;border:1px solid #8ea5ff66;color:var(--cyan);font-size:23px;box-shadow:0 0 25px #36e5ff25}
+    .n1{top:35px;left:25%}.n2{top:70px;right:8%;color:var(--pink)}.n3{bottom:55px;left:12%;color:#b99aff}.n4{bottom:25px;right:20%;color:#a7ffdf}
+    .spark{position:absolute;width:5px;height:5px;background:var(--cyan);border-radius:50%;box-shadow:0 0 12px var(--cyan);animation:blink 2s infinite alternate}
+    .s1{top:18%;right:35%}.s2{bottom:20%;left:40%}.s3{top:48%;left:5%}
+    @keyframes blink{to{opacity:.15;transform:scale(1.8)}}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:-10px;position:relative}
+    .stat{padding:20px;border:1px solid var(--line);background:var(--panel);border-radius:18px;text-align:center}
+    .stat strong{display:block;font-size:19px;background:linear-gradient(90deg,var(--cyan),#c49bff);-webkit-background-clip:text;color:transparent}
+    .stat span{display:block;color:var(--muted);font-size:12px;margin-top:5px}
+    section{padding:76px 0}
+    .section-head{text-align:center;margin-bottom:32px}
+    .kicker{font-size:12px;color:var(--cyan);letter-spacing:.18em;text-transform:uppercase;font-weight:800}
+    h2{font-size:clamp(30px,4vw,43px);letter-spacing:-.04em;margin:10px 0}
+    .section-head p{color:var(--muted);margin:0}
+    .about{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .glass{border:1px solid var(--line);background:var(--panel);backdrop-filter:blur(15px);border-radius:22px;padding:27px}
+    .glass h3{margin:0 0 12px;font-size:20px}
+    .glass p{color:var(--muted);line-height:1.8;margin:0}
+    .info-list{display:grid;gap:13px}
+    .info-row{display:flex;justify-content:space-between;gap:15px;padding-bottom:12px;border-bottom:1px solid var(--line);font-size:14px}
+    .info-row:last-child{border:0;padding:0}
+    .info-row span{color:var(--muted)}
+    .gallery-tools{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;margin-bottom:22px}
+    .filters{display:flex;gap:8px;flex-wrap:wrap}
+    .filter{border:1px solid var(--line);background:#ffffff08;color:var(--muted);border-radius:99px;padding:9px 14px;font-size:12px;cursor:pointer}
+    .filter.active,.filter:hover{background:#36e5ff18;border-color:#36e5ff88;color:var(--cyan)}
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+    .photo-card{position:relative;overflow:hidden;border-radius:18px;border:1px solid var(--line);background:var(--panel);cursor:pointer;min-height:220px;aspect-ratio:4/3}
+    .photo-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+    .photo-card:hover img{transform:scale(1.07)}
+    .photo-card:after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,rgba(4,8,25,.9))}
+    .photo-caption{position:absolute;z-index:1;bottom:15px;left:16px;right:16px}
+    .photo-caption strong{display:block;font-size:15px}
+    .photo-caption span{font-size:11px;color:#c4cce8}
+    .empty{grid-column:1/-1;text-align:center;padding:50px 20px;border:1px dashed #7585bd66;border-radius:18px;color:var(--muted)}
+    .empty b{display:block;color:var(--text);margin-bottom:8px}
+    .note{font-size:12px;color:var(--muted);line-height:1.7;margin-top:18px}
+    footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:13px}
+    .footer-inner{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+    .modal{display:none;position:fixed;inset:0;z-index:30;background:#030615ed;align-items:center;justify-content:center;padding:20px}
+    .modal.open{display:flex}
+    .modal img{max-width:min(100%,1000px);max-height:82vh;object-fit:contain;border-radius:14px;box-shadow:0 15px 70px #000}
+    .close{position:absolute;top:20px;right:25px;border:1px solid #ffffff55;background:#ffffff18;color:white;border-radius:50%;width:42px;height:42px;font-size:23px;cursor:pointer}
+    @media(max-width:800px){.hero-grid{grid-template-columns:1fr}.hero{padding-top:60px}.network-art{height:300px}.about{grid-template-columns:1fr}.gallery{grid-template-columns:repeat(2,1fr)}.navlinks{gap:13px;font-size:12px}}
+    @media(max-width:520px){.wrap{width:min(100% - 28px,1120px)}nav{height:64px}.brand{font-size:13px}.logo{width:36px;height:36px}.navlinks a:nth-child(2){display:none}h1{font-size:53px}.lead{font-size:15px}.network-art{height:260px}.orbit{width:270px;height:160px}.orbit.two{width:240px;height:190px}.core{width:115px;height:115px}.node{width:48px;height:48px}.stats{gap:8px}.stat{padding:15px 7px}.stat strong{font-size:16px}.stat span{font-size:10px}.gallery{gap:10px}.photo-card{min-height:145px}.photo-caption{left:10px;bottom:10px}.photo-caption strong{font-size:12px}.photo-caption span{font-size:10px}section{padding:58px 0}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="#home"><span class="logo">TJKT</span><span>XII TJKT 2</span></a>
+      <div class="navlinks"><a href="#home">Beranda</a><a href="#profil">Profil</a><a href="#galeri">Galeri</a></div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow"><span class="pulse"></span> Class Network · Angkatan 2026/2027</div>
+        <h1>WE ARE<br><span class="gradient">XII TJKT 2</span></h1>
+        <p class="lead">Terhubung oleh jaringan, disatukan oleh kebersamaan. Inilah ruang digital untuk menyimpan cerita, tawa, dan momen berharga keluarga besar XII TJKT 2.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#galeri">✦ Jelajahi Moments</a>
+          <a class="btn btn-ghost" href="#profil">Kenali Kelas Kami ↗</a>
+        </div>
+      </div>
+      <div class="network-art" aria-label="Ilustrasi jaringan komputer">
+        <div class="orbit"></div><div class="orbit two"></div>
+        <div class="core">⌘</div>
+        <div class="node n1">⌁</div><div class="node n2">◈</div><div class="node n3">▤</div><div class="node n4">⌘</div>
+        <i class="spark s1"></i><i class="spark s2"></i><i class="spark s3"></i>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap stats">
+    <div class="stat"><strong>XII TJKT 2</strong><span>Nama Kelas</span></div>
+    <div class="stat"><strong>SMK YASMIDA</strong><span>Asal Sekolah</span></div>
+    <div class="stat"><strong>2026/2027</strong><span>Angkatan</span></div>
+  </div>
+
+  <section id="profil">
+    <div class="wrap">
+      <div class="section-head"><div class="kicker">Who We Are</div><h2>Satu Kelas, Banyak Cerita.</h2><p>Kenali identitas keluarga besar XII TJKT 2.</p></div>
+      <div class="about">
+        <article class="glass">
+          <h3><span class="gradient">Tentang XII TJKT 2</span></h3>
+          <p>Kami adalah keluarga besar XII TJKT 2 dari SMK Yasmida Ambarawa. Di bidang Teknik Jaringan Komputer dan Telekomunikasi, kami belajar menghubungkan perangkat, membangun jaringan, dan berkembang bersama. Website ini menjadi tempat untuk mengabadikan perjalanan dan momen kebersamaan kami.</p>
+        </article>
+        <article class="glass">
+          <h3>Class Information</h3>
+          <div class="info-list">
+            <div class="info-row"><span>Nama kelas</span><b>XII TJKT 2</b></div>
+            <div class="info-row"><span>Asal sekolah</span><b>SMK Yasmida Ambarawa</b></div>
+            <div class="info-row"><span>Program keahlian</span><b>TJKT</b></div>
+            <div class="info-row"><span>Angkatan</span><b>2026/2027</b></div>
+            <div class="info-row"><span>Slogan</span><b>Connected by Network</b></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="galeri">
+    <div class="wrap">
+      <div class="section-head"><div class="kicker">Our Memories</div><h2><span class="gradient">Gallery Moments</span></h2><p>Setiap foto punya cerita. Setiap momen jadi kenangan. · 34 foto dokumentasi</p></div>
+      <div class="gallery-tools">
+        <div class="filters">
+          <button class="filter active" data-filter="all">Semua</button>
+          <button class="filter" data-filter="kelas">Kebersamaan</button>
+          <button class="filter" data-filter="belajar">Suasana Kelas</button>
+          <button class="filter" data-filter="sekolah">Kegiatan Sekolah</button>
+        </div>
+      </div>
+      <div class="gallery" id="gallery">
+        <!-- Foto galeri diambil dari folder images. -->
+      </div>
+      <p class="note">Galeri ini merupakan area dokumentasi publik. Pastikan foto yang dipasang memang boleh dibagikan dan mendapat persetujuan orang-orang yang ada di dalamnya.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>© 2026/2027 XII TJKT 2 · SMK Yasmida Ambarawa</span>
+    <span>One Class • One Connection • Endless Memories</span>
+  </div>
+</footer>
+
+<div class="modal" id="modal" aria-label="Tampilan foto besar">
+  <button class="close" id="closeModal" aria-label="Tutup">×</button>
+  <img id="modalImg" alt="Foto galeri diperbesar">
+</div>
+<script>
+  // Foto-foto yang dikirim telah dimasukkan ke folder images.
+  // Untuk menambah foto baru, salin salah satu objek di bawah ini dan ganti nama file serta judulnya.
+  // Kategori: "kelas", "belajar", atau "sekolah".
+  const photos = [
+    { src: "images/moment-01.jpeg", title: "Kebersamaan XII TJKT 2 #01", date: "Angkatan 2026/2027", category: "kelas" },
+    { src: "images/moment-02.jpeg", title: "Kebersamaan XII TJKT 2 #02", date: "Angkatan 2026/2027", category: "kelas" },
+    { src: "images/moment-03.jpeg", title: "Kebersamaan XII TJKT 2 #03", date: "Angkatan 2026/2027", category: "kelas" },
+    { src: "images/moment-04.jpeg", title: "Kebersamaan XII TJKT 2 #04", date: "Angkatan 2026/2027", category: "kelas" },
+    { src: "images/moment-05.jpeg", title: "Kebersamaan XII TJKT 2 #05", date: "Angkatan 2026/2027", category: "kelas" },
+    { src: "images/moment-06.jpeg", title: "Kebersamaan XII TJKT 2 #06", date: "Angkatan 2026/2027", category: "kelas" },
+    { src: "images/moment-07.jpeg", title: "Kebersamaan XII TJKT 2 #07", date: "Angkatan 2026/2027", category: "kelas" },
+    { src: "images/moment-08.jpeg", title: "Kebersamaan XII TJKT 2 #08", date: "Angkatan 2026/2027", category: "kelas" },
+    { src: "images/moment-09.jpeg", title: "Kebersamaan XII TJKT 2 #09", date: "Angkatan 2026/2027", category: "kelas" },
+    { src: "images/moment-10.jpeg", title: "Suasana Kelas #10", date: "Angkatan 2026/2027", category: "belajar" },
+    { src: "images/moment-11.jpeg", title: "Suasana Kelas #11", date: "Angkatan 2026/2027", category: "belajar" },
+    { src: "images/moment-12.jpeg", title: "Suasana Kelas #12", date: "Angkatan 2026/2027", category: "belajar" },
+    { src: "images/moment-13.jpeg", title: "Suasana Kelas #13", date: "Angkatan 2026/2027", category: "belajar" },
+    { src: "images/moment-14.jpeg", title: "Momen di Sekolah #14", date: "Angkatan 2026/2027", category: "sekolah" },
+    { src: "images/moment-15.jpeg", title: "Momen di Sekolah #15", date: "Angkatan 2026/2027", category: "sekolah" },
+    { src: "images/moment-16.jpeg", title: "Kebersamaan XII TJKT 2 #16", date: "Angkatan 2026/2027", category: "kelas" },
+    { src: "images/moment-17.jpeg", title: "Kebersamaan XII TJKT 2 #17", date: "Angkatan 2026/2027", category: "kelas" },
+    { src: "images/moment-18.jpeg", title: "Kebersamaan XII TJKT 2 #18", date: "Angkatan 2026/2027", category: "kelas" },
+    { src: "images/moment-19.jpeg", title: "Kebersamaan XII TJKT 2 #19", date: "Angkatan 2026/2027", category: "kelas" },
+    { src: "images/moment-20.jpeg", title: "Kebersamaan XII TJKT 2 #20", date: "Angkatan 2026/2027", category: "kelas" },
+    { src: "images/moment-21.jpeg", title: "Kebersamaan XII TJKT 2 #21", date: "Angkatan 2026/2027", category: "kelas" },
+    { src: "images/moment-22.jpeg", title: "Kebersamaan XII TJKT 2 #22", date: "Angkatan 2026/2027", category: "kelas" },
+    { src: "images/moment-23.jpeg", title: "Kebersamaan XII TJKT 2 #23", date: "Angkatan 2026/2027", category: "kelas" },
+    { src: "images/moment-24.jpeg", title: "Suasana Kelas #24", date: "Angkatan 2026/2027", category: "belajar" },
+    { src: "images/moment-25.jpeg", title: "Suasana Kelas #25", date: "Angkatan 2026/2027", category: "belajar" },
+    { src: "images/moment-26.jpeg", title: "Suasana Kelas #26", date: "Angkatan 2026/2027", category: "belajar" },
+    { src: "images/moment-27.jpeg", title: "Kebersamaan XII TJKT 2 #27", date: "Angkatan 2026/2027", category: "kelas" },
+    { src: "images/moment-28.jpeg", title: "Kebersamaan XII TJKT 2 #28", date: "Angkatan 2026/2027", category: "kelas" },
+    { src: "images/moment-29.jpeg", title: "Kebersamaan XII TJKT 2 #29", date: "Angkatan 2026/2027", category: "kelas" },
+    { src: "images/moment-30.jpeg", title: "Kebersamaan XII TJKT 2 #30", date: "Angkatan 2026/2027", category: "kelas" },
+    { src: "images/moment-31.jpeg", title: "Momen di Sekolah #31", date: "Angkatan 2026/2027", category: "sekolah" },
+    { src: "images/moment-32.jpeg", title: "Momen di Sekolah #32", date: "Angkatan 2026/2027", category: "sekolah" },
+    { src: "images/moment-33.jpeg", title: "Momen di Sekolah #33", date: "Angkatan 2026/2027", category: "sekolah" },
+    { src: "images/moment-34.jpeg", title: "Momen di Sekolah #34", date: "Angkatan 2026/2027", category: "sekolah" }
+  ];
+  const gallery = document.getElementById('gallery');
+  const filters = document.querySelectorAll('.filter');
+  function renderGallery(filter = 'all') {
+    const items = photos.filter(p => filter === 'all' || p.category === filter);
+    if (!items.length) {
+      gallery.innerHTML = '<div class="empty"><b>Belum ada foto di kategori ini.</b>Tambahkan foto kelas pada daftar <code>photos</code> di bagian JavaScript file index.html.</div>';
+      return;
+    }
+    gallery.innerHTML = items.map(p => `
+      <article class="photo-card" tabindex="0" role="button" aria-label="Lihat ${p.title}" data-src="${p.src}">
+        <img src="${p.src}" alt="${p.title}" loading="lazy">
+        <div class="photo-caption"><strong>${p.title}</strong><span>${p.date || ''}</span></div>
+      </article>`).join('');
+    gallery.querySelectorAll('.photo-card').forEach(card => {
+      const open = () => showPhoto(card.dataset.src);
+      card.addEventListener('click', open);
+      card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+      card.querySelector('img').addEventListener('error', e => {
+        e.target.alt = 'Foto tidak dapat dimuat. Periksa folder images.';
+        e.target.style.opacity = '.15';
+      });
+    });
+  }
+  filters.forEach(btn => btn.addEventListener('click', () => {
+    filters.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderGallery(btn.dataset.filter);
+  }));
+  const modal = document.getElementById('modal');
+  function showPhoto(src) { document.getElementById('modalImg').src = src; modal.classList.add('open'); }
+  function closePhoto() { modal.classList.remove('open'); document.getElementById('modalImg').src = ''; }
+  document.getElementById('closeModal').addEventListener('click', closePhoto);
+  modal.addEventListener('click', e => { if (e.target === modal) closePhoto(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closePhoto(); });
+  renderGallery();
+</script>
+</body>
+</html>
